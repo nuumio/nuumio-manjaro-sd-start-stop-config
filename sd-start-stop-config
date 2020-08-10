@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for disk in /sys/class/scsi_disk/*/manage_start_stop; do
+  echo 1 > ${disk}
+done

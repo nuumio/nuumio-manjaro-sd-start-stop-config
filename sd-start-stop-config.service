@@ -1,0 +1,9 @@
+[Unit]
+Description=Set SCSI disk start and stop managed (spin down on shutdown)
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/sd-start-stop-config
+
+[Install]
+WantedBy=basic.target
