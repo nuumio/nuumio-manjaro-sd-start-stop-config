@@ -1,5 +1,13 @@
 #!/bin/bash
 
-for disk in /sys/class/scsi_disk/*/manage_start_stop; do
-  echo 1 > ${disk}
+# In newer kernels "manage_start_stop flag of scsi devices is split into the
+# manage_system_start_stop and manage_runtime_start_stop flags". 6.1.59 has this
+# 6.1.53(?) probably didn't.
+# See: https://lore.kernel.org/all/20230923002932.1082348-1-dlemoal@kernel.org/T/
+#
+# To shuwdown drives with newer kernels we need to take this into account.
+for type in runtime system; do
+  for disk in /sys/class/scsi_disk/*/manage_${type}_start_stop; do
+    echo 1 > ${disk}
+  done
 done

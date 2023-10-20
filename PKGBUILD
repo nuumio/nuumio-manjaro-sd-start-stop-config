@@ -1,5 +1,5 @@
 pkgname=sd-start-stop-config
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Set SCSI disk start and stop managed (spin down on shutdown)"
 arch=('any')
